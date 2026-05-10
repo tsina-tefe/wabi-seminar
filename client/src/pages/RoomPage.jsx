@@ -38,7 +38,9 @@ export default function RoomPage() {
           <div className="flex flex-wrap gap-2 items-center justify-between mb-4">
             <div>
               <h1 className="text-xl font-semibold">Room: {roomId}</h1>
-              <p className="text-sm text-slate-300">Signed in as {user?.name}</p>
+              <p className="text-sm text-slate-300">
+                Signed in as {user?.name}
+              </p>
             </div>
             <button
               className="text-sm text-indigo-300 hover:text-indigo-200"
@@ -51,7 +53,11 @@ export default function RoomPage() {
           <div className="grid md:grid-cols-2 gap-3">
             <VideoTile title="You" stream={localStream} muted />
             {Object.entries(remoteStreams).map(([peerId, stream]) => (
-              <VideoTile key={peerId} title={`Peer ${peerId}`} stream={stream} />
+              <VideoTile
+                key={peerId}
+                title={`Peer ${peerId}`}
+                stream={stream}
+              />
             ))}
           </div>
 
@@ -67,7 +73,9 @@ export default function RoomPage() {
               className="px-4 py-2 rounded bg-slate-700 hover:bg-slate-600 disabled:opacity-40 disabled:pointer-events-none"
               onClick={toggleMic}
               disabled={!hasLocalAudio}
-              title={!hasLocalAudio ? "No microphone in this session" : undefined}
+              title={
+                !hasLocalAudio ? "No microphone in this session" : undefined
+              }
             >
               {!hasLocalAudio ? "No mic" : isMicOn ? "Mute" : "Unmute"}
             </button>
@@ -78,9 +86,16 @@ export default function RoomPage() {
               disabled={!hasLocalVideo}
               title={!hasLocalVideo ? "No camera in this session" : undefined}
             >
-              {!hasLocalVideo ? "No camera" : isCamOn ? "Camera Off" : "Camera On"}
+              {!hasLocalVideo
+                ? "No camera"
+                : isCamOn
+                  ? "Camera Off"
+                  : "Camera On"}
             </button>
-            <button className="px-4 py-2 rounded bg-red-500 hover:bg-red-400" onClick={leaveRoom}>
+            <button
+              className="px-4 py-2 rounded bg-red-500 hover:bg-red-400"
+              onClick={leaveRoom}
+            >
               Leave Room
             </button>
           </div>
@@ -102,9 +117,12 @@ export default function RoomPage() {
           <h2 className="font-medium mb-3">Live Chat</h2>
           <div className="flex-1 overflow-auto space-y-2 mb-3">
             {messages.map((msg) => (
-              <div key={msg.id} className="bg-slate-900 border border-slate-700 rounded p-2">
+              <div
+                key={msg.id}
+                className="bg-slate-900 border border-slate-700 rounded p-2"
+              >
                 <p className="text-xs text-slate-400">{msg.user?.name}</p>
-                <p className="text-sm break-words">{msg.message}</p>
+                <p className="text-sm wrap-break-words">{msg.message}</p>
               </div>
             ))}
           </div>
@@ -115,7 +133,10 @@ export default function RoomPage() {
               onChange={(e) => setChatInput(e.target.value)}
               placeholder="Type message"
             />
-            <button className="px-4 rounded bg-indigo-500 hover:bg-indigo-400" onClick={sendMessage}>
+            <button
+              className="px-4 rounded bg-indigo-500 hover:bg-indigo-400"
+              onClick={sendMessage}
+            >
               Send
             </button>
           </div>
