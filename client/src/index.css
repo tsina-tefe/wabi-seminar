@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+@layer base {
+  a[href],
+  button:not(:disabled),
+  input[type="button"]:not(:disabled),
+  input[type="submit"]:not(:disabled),
+  input[type="reset"]:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+}
+
 body {
   margin: 0;
   font-family: Inter, system-ui, sans-serif;
